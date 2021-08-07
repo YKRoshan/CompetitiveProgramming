@@ -35,11 +35,15 @@ public class dp7_HowSum {
         return result;
     }
 
-    public List<Integer> naiveHowSum(int targetSum, List<Integer> numbers) {
-        if (targetSum < 0) { return null; }
-        if (targetSum == 0) { return (new ArrayList<>()); }
+    public static List<Integer> howSum(int targetSum, List<Integer> numbers) {
+        if (targetSum < 0) {
+            return null;
+        }
+        if (targetSum == 0) {
+            return (new ArrayList<>());
+        }
         for (Integer value : numbers) {
-            List<Integer> result = naiveHowSum(targetSum - value, numbers);
+            List<Integer> result = howSum(targetSum - value, numbers);
             if (result != null) {
                 result.add(0, value);
                 return result;
@@ -47,7 +51,6 @@ public class dp7_HowSum {
         }
         return null;
     }
-
 
     public static void main(String[] args) {
         System.out.println(howSum(7, new int[]{4, 3, 6}));
